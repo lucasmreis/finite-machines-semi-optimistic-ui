@@ -4,22 +4,20 @@ export default {
     noRequest: {
       onEntry: "clearAllReq",
       on: {
-        makeRequest: "makingRequest"
+        setNextRequest: "makingRequest"
       }
     },
     makingRequest: {
-      onEntry: "runCurrentReq",
+      onEntry: "runCurrentRequest",
       on: {
         requestDone: "noRequest",
-        makeRequest: "disabled"
+        setNextRequest: "disabled"
       }
     },
     disabled: {
-      onEntry: "storeSecondReq",
       on: {
         requestDone: "makingRequest"
-      },
-      onExit: "moveSecondToCurrent"
+      }
     }
   }
 };
